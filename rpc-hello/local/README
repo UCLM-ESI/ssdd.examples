@@ -1,0 +1,15 @@
+Depends: gcc
+
+Compilation
+-----------
+
+$ make printmessage
+cc     printmessage.c   -o printmessage
+
+
+Run
+---
+
+$ ./printmessage "hello world"
+hello world
+Message Delivered!
