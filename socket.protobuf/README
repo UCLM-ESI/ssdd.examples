@@ -1,12 +1,12 @@
-Depends
+Depende
 -------
 
 - python3-protobuf
 - protobuf-compiler
 
 
-Generate stubs
---------------
+Generar stubs
+-------------
 
 $ protoc -I . --python_out=. sensor.proto
 
