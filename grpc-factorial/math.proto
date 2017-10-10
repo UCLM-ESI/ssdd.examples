@@ -1,0 +1,18 @@
+// This example is based on https://github.com/grpc/grpc/tree/v1.6.x/examples/python/helloworld
+
+syntax = "proto3";
+
+package math;
+
+// The greeting service definition.
+service Math {
+  rpc factorial (FactorialRequest) returns (FactorialReply) {}
+}
+
+message FactorialRequest {
+  int32 value = 1;
+}
+
+message FactorialReply {
+  int64 result = 1;
+}

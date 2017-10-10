@@ -1,0 +1,15 @@
+// This example is based on https://github.com/grpc/grpc/tree/v1.6.x/examples/python/helloworld
+
+syntax = "proto3";
+
+package hello;
+
+service Hello {
+  rpc write (PrintRequest) returns (PrintReply) {}
+}
+
+message PrintRequest {
+  string message = 1;
+}
+
+message PrintReply {}
