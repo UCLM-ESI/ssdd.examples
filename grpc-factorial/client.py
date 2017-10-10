@@ -10,7 +10,7 @@ import math_pb2_grpc
 
 
 if len(sys.argv) != 3:
-    print("usage: ./client <host> <value>")
+    print("usage: ./client <server> <value>")
     sys.exit(1)
 
 server = sys.argv[1]
