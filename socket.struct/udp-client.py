@@ -23,6 +23,6 @@ if len(sys.argv) != 2:
 
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-data = serialize_reading(id_=8, type_=PRESSURE, value=16.3, unit='bar')
+data = serialize_reading(id_=8, type_=PRESSURE, value=16.3, unit='bar')  
 sock.sendto(data, (sys.argv[1], 2000))
 sock.close()
