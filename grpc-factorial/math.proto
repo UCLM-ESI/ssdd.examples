@@ -4,7 +4,6 @@ syntax = "proto3";
 
 package math;
 
-// The greeting service definition.
 service Math {
   rpc factorial (FactorialRequest) returns (FactorialReply) {}
 }

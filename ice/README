@@ -1,0 +1,16 @@
+Depends
+-------
+
+- python3-zeroc-ice (deb)
+
+
+Run server
+----------
+
+$ ./Server.py --Ice.Config=Server.config
+
+
+Run client
+----------
+
+$ ./Client.py "<proxy>"
