@@ -1,0 +1,24 @@
+Depends
+-------
+
+- python3-flask-restful
+- python3-requests
+
+
+Run server
+----------
+
+$ ./server.py
+
+
+Run python client
+-----------------
+
+$ ./client.py
+
+
+Run browser
+-----------
+
+(run client before)
+$ firefox localhost:5000/device1
