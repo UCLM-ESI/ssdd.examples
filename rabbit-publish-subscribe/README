@@ -1,0 +1,35 @@
+# Extracted from: //www.rabbitmq.com/install-debian.html
+
+Instalacion en Debian/Ubuntu:
+
+	apt-get install rabbitmq-server (server)
+	pip3 install pika (cliente)
+
+Description: 1 publisher publish a tweet and n subscribers receive the same tweet
+
+System overview:
+	publisher (P)
+	subscriber1 (S1)
+	subscriber2 (S2)
+	exchange (E)
+	Message queues: 
+		twitter1 (S1)
+		twitter2 (S2)
+	
+P --> E ------>	|||||||t3|t2|t1| 	--> S1 gets t1, t2, t3
+	|	  twitter1		
+	|----->	|||||||t3|t2|t1| 	--> S2 gets t1, t2, t3
+		  twitter2		
+
+Observations: 
+	You need three consoles, one for each participant
+
+subscriber1:
+	python3 subscriber.py
+
+subscriber1:
+	python3 subscriber.py
+
+publisher:
+	python3 publisher.py <my_tweet>
+	Example: python3 producer "Hello world ..."

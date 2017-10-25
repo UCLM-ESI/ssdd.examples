@@ -1,0 +1,23 @@
+# Extracted from: //www.rabbitmq.com/install-debian.html
+
+Instalacion en Debian/Ubuntu:
+
+	apt-get install rabbitmq-server (server)
+	pip3 install pika (cliente)
+
+
+System overview:
+	Producer (P)
+	Consumer (C)
+	Message queue: hello 
+	
+	P --> ||||||m3|m2|m1| --> C
+		hello
+
+receiver:
+	
+	python3 receiver.py
+
+sender:
+	
+	python3 sender.py
