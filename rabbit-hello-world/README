@@ -2,8 +2,8 @@
 
 Instalacion en Debian/Ubuntu:
 
-	apt-get install rabbitmq-server (server)
-	pip3 install pika (cliente)
+	apt-get install rabbitmq-server (queue manager)
+	pip3 install pika (producers and consumers)
 
 
 System overview:
@@ -14,10 +14,10 @@ System overview:
 	P --> ||||||m3|m2|m1| --> C
 		hello
 
-receiver:
+Consumer:
 	
 	python3 receiver.py
 
-sender:
+Producer:
 	
 	python3 sender.py

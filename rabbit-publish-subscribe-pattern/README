@@ -2,8 +2,8 @@
 
 Instalacion en Debian/Ubuntu:
 
-	apt-get install rabbitmq-server (server)
-	pip3 install pika (cliente)
+	apt-get install rabbitmq-server (queue manager)
+	pip3 install pika (publisher and subscriber)
 
 Description: 1 publisher publish a tweet with routing_key and n subscribers receive only the tweets
 that match a given pattern or binding_key

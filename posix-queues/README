@@ -1,0 +1,8 @@
+Productor/Consumidor con colas de mensajes POSIX
+
+Uso:
+
+./producer 
+
+
+./consumer

@@ -19,6 +19,7 @@ void Producer(){
 			mq_close(store);
 			exit(-1);
 		}
+		printf("Envio dato:%d\n", data);
 	}
 	return;
 }

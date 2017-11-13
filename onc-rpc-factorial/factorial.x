@@ -5,4 +5,4 @@ program FACTORIAL_PROG {
    version FACTORIAL_VERS {
     unsigned long FACTORIAL(int n) = 1;
    } = 1;
-} = 600000001;
+} = 600000002;

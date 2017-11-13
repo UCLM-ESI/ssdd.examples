@@ -2,7 +2,7 @@
 
 void factorial_prog_1(char *host, int n) {
     CLIENT *clnt;
-    long *result_1;
+    u_long *result_1;
 
 #ifndef DEBUG
     clnt = clnt_create (host, FACTORIAL_PROG, FACTORIAL_VERS, "udp");
@@ -16,7 +16,7 @@ void factorial_prog_1(char *host, int n) {
     if (result_1 == NULL)
         clnt_perror(clnt, "call failed");
     else
-        printf("factorial(%d): %d", n, *result_1);
+        printf("factorial(%d): %lu", n, *result_1);
 
 
 #ifndef DEBUG
