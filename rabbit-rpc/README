@@ -1,6 +1,6 @@
 # Extracted from: //www.rabbitmq.com/install-debian.html
 
-Instalacion en Debian/Ubuntu:
+Instalación en Debian/Ubuntu:
 
 	apt-get install rabbitmq-server (queue manager)
 	pip3 install pika (rpc client and server)
@@ -8,23 +8,23 @@ Instalacion en Debian/Ubuntu:
 System overview:
 	RPC client (C)
 	RPC server (S)
-	Message queues: 
-		RPC request: rpc-queue	
+	Message queues:
+		RPC request: rpc-queue
 		RPC reply (implicit)
 
    rpc-request
  C ------>||||||req3|req2|req1|	-----> S for each req:
-		rpc-queue			gets req
-   rpc-reply				 	invoques func and obtaines response res
-   <----- |res1|res2|res3||||||  <-----	 	send response res
+		requests                        gets request
+   rpc-reply                                    invokes func and get result
+   <----- |res1|res2|res3||||||  <-----	 	send reply
 		replies
 
 RPC client:
 	python3 client.py <fibonacci-num>
 
 RPC server:
-	python3 server.py 
+	python3 server.py
 
-Example: 
+Example:
 	   python3 server.py
-	   python3 client.py 2 25 
+	   python3 client.py 2 25
