@@ -1,11 +1,12 @@
-# Extracted from: https://www.rabbitmq.com/tutorials/tutorial-five-python.html
 #!/usr/bin/env python3
-import pika
+# Extracted from: https://www.rabbitmq.com/tutorials/tutorial-five-python.html
+
 import sys
+import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'));
 channel = connection.channel();
-channel.exchange_declare(exchange='twitter-pattern', exchange_type='topic');	
+channel.exchange_declare(exchange='twitter-pattern', exchange_type='topic');
 result = channel.queue_declare(exclusive='True')
 queue_name = result.method.queue
 
@@ -25,5 +26,3 @@ def callback(ch, method, properties, body):
 channel.basic_consume(callback, queue=queue_name, no_ack=True);
 
 channel.start_consuming();
-
- 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Based on https://www.rabbitmq.com/tutorials/tutorial-six-python.html
 
 import pika

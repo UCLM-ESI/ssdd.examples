@@ -1,11 +1,12 @@
-# Extracted from: https://www.rabbitmq.com/tutorials/tutorial-two-python.html
 #!/usr/bin/env python3
-import pika
+# Extracted from: https://www.rabbitmq.com/tutorials/tutorial-two-python.html
+
 import time
+import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'));
 channel = connection.channel();
-channel.queue_declare(queue='task_queue', durable=True);	
+channel.queue_declare(queue='task_queue', durable=True);
 
 print("[*] Waiting for messages. To exit press Ctrl+");
 
@@ -20,5 +21,3 @@ channel.basic_qos(prefetch_count=1);
 channel.basic_consume(callback, queue='task_queue');
 
 channel.start_consuming();
-
- 
