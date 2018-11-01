@@ -18,11 +18,10 @@ $ rmiregistry
 Run server
 ----------
 
-$ java -Djava.rmi.server.codebase=file:/ example.hello.Server
-
+$ java -classpath . -Djava.rmi.server.codebase=file:./ Server 9000
 
 
 Run client
 ----------
 
-$
+$ java  -classpath . Client localhost 9000
