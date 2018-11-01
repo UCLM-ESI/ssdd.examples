@@ -1,0 +1,28 @@
+Depends
+-------
+
+- openjdk-11-jdk-headless (deb)
+
+Compile
+-------
+
+- javac *.java
+
+
+Run registry
+------------
+
+$ rmiregistry
+
+
+Run server
+----------
+
+$ java -Djava.rmi.server.codebase=file:/ example.hello.Server
+
+
+
+Run client
+----------
+
+$
