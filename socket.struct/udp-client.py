@@ -5,7 +5,7 @@ import sys
 import socket
 import struct
 
-UNKNOWN  = 0
+UNKNOWN = 0
 HUMIDITY = 1
 PRESSURE = 2
 ACCELERATION = 3
@@ -23,6 +23,7 @@ if len(sys.argv) != 2:
 
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-data = serialize_reading(id_=8, type_=PRESSURE, value=16.3, unit='bar')  
+data = serialize_reading(id_=8, type_=PRESSURE, value=16.3, unit='bar')
+print(data)
 sock.sendto(data, (sys.argv[1], 2000))
 sock.close()
