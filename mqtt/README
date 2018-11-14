@@ -1,0 +1,23 @@
+Depends
+-------
+
+- python3-paho-mqtt (deb)
+- mosquitto (deb)
+
+
+Start broker
+------------
+
+$ sudo service start mosquitto
+
+
+Run subscriber
+--------------
+
+$ ./subscriber.py
+
+
+Run publisher
+-------------
+
+$ ./publisher.py
