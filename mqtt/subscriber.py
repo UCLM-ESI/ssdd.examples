@@ -13,4 +13,8 @@ subscriber = mqtt.Client()
 subscriber.on_message = callback
 subscriber.connect('localhost')
 subscriber.subscribe("lab-02/temp-sensor")
-subscriber.loop_forever()
+
+try:
+    subscriber.loop_forever()
+except KeyboardInterrupt:
+    pass
