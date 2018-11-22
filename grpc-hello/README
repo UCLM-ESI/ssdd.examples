@@ -1,8 +1,8 @@
 Depends
 -------
 
-- grpcio (pip)
-- grpcio-tools (pip)
+- grpcio (pip3)
+- grpcio-tools (pip3)
 
 
 Compile proto
