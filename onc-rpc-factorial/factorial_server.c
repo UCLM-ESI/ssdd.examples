@@ -9,6 +9,5 @@ u_long *factorial_1_svc(int *n, struct svc_req *rqstp) {
     for (int i=*n; i>0; i--)
         result *= i;
 
-
     return &result;
 }
