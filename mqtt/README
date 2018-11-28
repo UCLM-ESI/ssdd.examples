@@ -5,10 +5,10 @@ Depends
 - mosquitto (deb)
 
 
-Start broker
-------------
+Assure broker is running
+------------------------
 
-$ sudo service start mosquitto
+$ sudo service mosquitto restart
 
 
 Run subscriber
