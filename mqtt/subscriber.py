@@ -13,7 +13,7 @@ def callback(client, userdata, message):
 subscriber = mqtt.Client()
 subscriber.on_message = callback
 subscriber.connect('localhost')
-subscriber.subscribe("temperature/+")
+subscriber.subscribe('temperature/+')
 
 try:
     subscriber.loop_forever()
