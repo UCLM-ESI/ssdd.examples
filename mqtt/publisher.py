@@ -6,9 +6,6 @@ import time
 import random
 import paho.mqtt.client as mqtt
 
-publisher = mqtt.Client()
-publisher.connect('localhost')
-
 
 def take_reading():
     return {
@@ -18,6 +15,9 @@ def take_reading():
         'timestamp': time.time(),
     }
 
+
+publisher = mqtt.Client()
+publisher.connect('localhost')
 
 while 1:
     publisher.publish('temperature/X002', json.dumps(take_reading()))
