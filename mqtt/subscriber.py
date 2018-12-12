@@ -7,7 +7,7 @@ import paho.mqtt.client as mqtt
 
 def callback(client, userdata, message):
     print("topic: {}, msg: {}".format(
-        message.topic, json.loads(message.payload)))
+        message.topic, json.loads(message.payload.decode())))
 
 
 subscriber = mqtt.Client()
