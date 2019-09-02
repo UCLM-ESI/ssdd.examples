@@ -17,7 +17,7 @@ def take_reading():
 
 
 publisher = mqtt.Client()
-publisher.connect('localhost')
+publisher.connect('127.0.0.1')
 
 while 1:
     publisher.publish('temperature/X002', json.dumps(take_reading()))
