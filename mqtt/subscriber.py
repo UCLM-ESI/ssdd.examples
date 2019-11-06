@@ -6,14 +6,17 @@ import paho.mqtt.client as mqtt
 
 
 def callback(client, userdata, message):
+    decoded = json.loads(message.payload.decode())
     print("topic: {}, msg: {}".format(
-        message.topic, json.loads(message.payload.decode())))
-    print('hola')
+        message.topic, decoded))
+
+    print(decoded["value"])
+
 
 
 subscriber = mqtt.Client()
 subscriber.on_message = callback
-subscriber.connect('161.67.27.32')
+subscriber.connect('localhost')
 subscriber.subscribe('temperature/+')
 
 try:

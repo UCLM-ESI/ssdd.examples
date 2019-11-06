@@ -2,6 +2,7 @@ Depends
 -------
 
 - python-celery-common
+- python-celery
 
 
 Run worker
