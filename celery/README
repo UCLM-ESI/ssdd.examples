@@ -1,0 +1,16 @@
+Depends
+-------
+
+- python-celery-common
+
+
+Run worker
+----------
+
+$ celery worker -A tasks
+
+
+Run client
+----------
+
+$ ./client.py
