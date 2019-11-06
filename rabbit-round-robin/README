@@ -2,8 +2,8 @@
 
 Instalacion en Debian/Ubuntu:
 
-	apt-get install rabbitmq-server (queue manager)
-	pip3 install pika (producer and consumer)
+- apt-get install rabbitmq-server # queue manager
+- pip3 install pika==0.11.0       # producers and consumers
 
 Description: round-robin scheduler
 
@@ -12,12 +12,12 @@ System overview:
 	worker1 (W1)
 	worker2 (W2)
 	Message queue: work
-	
+
 	P --> |||||||j3|j2|j1| 	--> W1 gets j1
 		  work		--> W2 gets j2
 				    W1 gets j3
 
-Observations: 
+Observations:
 	You need three consoles, one for each participant
 
 worker1:
