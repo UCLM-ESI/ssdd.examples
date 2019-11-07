@@ -2,8 +2,8 @@
 
 Instalacion en Debian/Ubuntu:
 
-	apt-get install rabbitmq-server (queue manager)
-	pip3 install pika (publisher and subscriber)
+- apt install rabbitmq-server # queue manager
+- apt install pika            # version 0.11.0
 
 Description: 1 publisher publish a tweet with routing_key and n subscribers receive only the tweets
 that match a given pattern or binding_key
@@ -13,18 +13,18 @@ System overview:
 	subscriber1 (S1)
 	subscriber2 (S2)
 	exchange (E)
-	Message queues: 
+	Message queues:
 		twitter-pattern1 (S1)
 		twitter-pattern2 (S2)
 
 
 	binding_key
 P --> E ------>	|||||||t3|t2|t1| 	--> S1 gets t1, t2
-	|	     twitter1		
+	|	     twitter1
 	|----->	|||||||t3|t2|t1| 	--> S2 gets t1, t3
-	binding_key  twitter2		
+	binding_key  twitter2
 
-Observations: 
+Observations:
 	You need three consoles, one for each participant
 
 subscriber1:
@@ -34,7 +34,7 @@ subscriber2:
 	python3 subscriber.py binding_key
 
 where:
-	binding_key: a pattern in the format "word1.word2. ... .wordn" 
+	binding_key: a pattern in the format "word1.word2. ... .wordn"
 	word1, word2, wordn could use wildcards
 
 publisher:
@@ -43,8 +43,8 @@ publisher:
 		routing_key: a list of words delimited by dots in the format "word1.word2. ... .wordn"
 
 
-Example: 
+Example:
 	   python3 publisher.py "hoy.cr" "Ven al cine gratis"
 	   python3 publisher.py "mañana.madrid" "Ven al teatro por 10 euros"
-	   python3 subscriber.py "*.madrid"		
-	   python3 subscriber.py "hoy.*"		
+	   python3 subscriber.py "*.madrid"
+	   python3 subscriber.py "hoy.*"

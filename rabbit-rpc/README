@@ -2,8 +2,8 @@
 
 Instalación en Debian/Ubuntu:
 
-	apt-get install rabbitmq-server (queue manager)
-	pip3 install pika (rpc client and server)
+- apt install rabbitmq-server # queue manager
+- apt install pika            # version 0.11.0
 
 System overview:
 	RPC client (C)

@@ -2,8 +2,8 @@
 
 Instalacion en Debian/Ubuntu:
 
-	apt-get install rabbitmq-server (queue manager)
-	pip3 install pika (productores y consumidores)
+- apt install rabbitmq-server # queue manager
+- apt install pika            # version 0.11.0
 
 Description: 1 publisher publish a tweet and n subscribers receive the same tweet
 
@@ -12,16 +12,16 @@ System overview:
 	subscriber1 (S1)
 	subscriber2 (S2)
 	exchange (E) - type: fanout: The exchange routes the message to all queues
-	Message queues: 
+	Message queues:
 		twitter1 (S1)
 		twitter2 (S2)
-	
-P --> E ------>	|||||||t3|t2|t1| 	--> S1 gets t1, t2, t3
-	|	  twitter1		
-	|----->	|||||||t3|t2|t1| 	--> S2 gets t1, t2, t3
-		  twitter2		
 
-Observations: 
+P --> E ------>	|||||||t3|t2|t1| 	--> S1 gets t1, t2, t3
+	|	  twitter1
+	|----->	|||||||t3|t2|t1| 	--> S2 gets t1, t2, t3
+		  twitter2
+
+Observations:
 	You need three consoles, one for each participant
 
 subscriber1:
