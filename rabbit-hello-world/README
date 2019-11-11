@@ -3,7 +3,7 @@
 Instalacion en Debian/Ubuntu:
 
 - apt install rabbitmq-server # queue manager
-- apt install pika            # version 0.11.0
+- apt install python3-pika    # version 0.11.0
 
 System overview:
 	Producer (P)
