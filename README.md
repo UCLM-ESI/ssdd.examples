@@ -1,1 +1,1 @@
-Ejemplos funcionales relacionados con las clases de SSDD.
+Working examples related to Distributed Systems sessions
