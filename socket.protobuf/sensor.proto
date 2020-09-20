@@ -1,16 +1,16 @@
-syntax = "proto2";
+syntax = "proto3";
 
 message Reading {
-    required int32 Id = 1;
+    int32 Id = 1;
 
-    enum SensorType{
+    enum SensorType {
        UNKNOWN  = 0;
        HUMIDITY = 1;
        PRESSURE = 2;
        ACCELERATION = 3;
     }
 
-    optional SensorType type = 2 [default = UNKNOWN];
-    optional float value = 3;
-    optional string unit = 4;
+    SensorType type = 2;
+    float value = 3;
+    string unit = 4;
 }

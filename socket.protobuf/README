@@ -1,8 +1,8 @@
 Depende
 -------
 
-- python3-protobuf
 - protobuf-compiler
+- python3-protobuf
 
 
 Generar stubs
