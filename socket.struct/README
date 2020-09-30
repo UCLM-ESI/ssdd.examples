@@ -8,3 +8,5 @@ Run client
 ----------
 
 % ./udp-client.py localhost
+
+.
