@@ -7,27 +7,47 @@ import struct
 
 
 class ClientStub:
+    FACTORIAL = 0
+    POWER = 1
+
     def __init__(self, host, port):
-        self.sock = socket.socket()
-        self.sock.connect((host, port))
+        self.server_endpoint = host, port
 
     def factorial(self, n):
-        request = struct.pack("B", n)
-        self.sock.sendall(request)
+        sock = socket.socket()
+        sock.connect(self.server_endpoint)
 
-        reply = self.sock.recv(128)
+        request = struct.pack('BB', self.FACTORIAL, n)
+        sock.sendall(request)
+
+        reply = sock.recv(128)
         result = struct.unpack("Q", reply)[0]
+
+        sock.close()
+        return result
+
+    def power(self, base, exp):
+        sock = socket.socket()
+        sock.connect(self.server_endpoint)
+
+        request = struct.pack('BBB', self.POWER, base, exp)
+        sock.sendall(request)
+
+        reply = sock.recv(128)
+        result = struct.unpack("Q", reply)[0]
+
+        sock.close()
         return result
 
 
 if len(sys.argv) != 3:
-    print("usage: ./client <server> <value>")
+    print("usage: ./client <server> <arg>")
     sys.exit(1)
 
 
 server = sys.argv[1]
-value = int(sys.argv[2])
+arg = int(sys.argv[2])
 
 stub = ClientStub(server, 2000)
-result = stub.factorial(value)
-print("result = '{}'".format(result))
+print("factorial({}) = '{}'".format(arg, stub.factorial(arg)))
+print("power({}, {}) = '{}'".format(arg, arg-1, stub.power(arg, arg-1)))
