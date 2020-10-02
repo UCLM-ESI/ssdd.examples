@@ -1,1 +1,22 @@
 A minimal RPC client/server from scratch with a TCP socket and "struct" serialization.
+
+This example follows RPC basics according to:
+
+- Coulouris, Dollimore, Kindberg and Blair, Distributed Systems: Concepts and Design
+  Edn 5. Pearson Education 2012. Section 5.3.2:
+
+  Implementation of RPC:
+  The software components required to implement RPC are shown in Figure 5.10. The client
+  that accesses a service includes one stub procedure for each procedure in the service
+  interface. The stub procedure behaves like a local procedure to the client, but instead
+  of executing the call, it marshals the procedure identifier and the arguments into a
+  request message, which it sends via its communication module to the server. When the
+  reply message arrives, it unmarshals the results. The server process contains a
+  dispatcher together with one server stub procedure and one service procedure for each
+  procedure in the service interface. The dispatcher selects one of the server stub
+  procedures according to the procedure identifier in the request message. The server stub
+  procedure then unmarshals the arguments in the request message, calls the corresponding
+  service procedure and marshals the return values for the reply message. The service
+  procedures implement the procedures in the service interface. The client and server stub
+  procedures and the dispatcher can be generated automatically by an interface compiler
+  from the interface definition of the service.
