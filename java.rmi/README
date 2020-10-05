@@ -1,7 +1,7 @@
 Depends
 -------
 
-- openjdk-11-jdk-headless (deb)
+- openjdk-14-jdk-headless (deb)
 
 Compile
 -------
@@ -12,7 +12,7 @@ Compile
 Run registry
 ------------
 
-$ rmiregistry
+$ rmiregistry &
 
 
 Run server
