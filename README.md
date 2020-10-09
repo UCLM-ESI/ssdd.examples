@@ -1,1 +1,1 @@
-Working examples related to Distributed Systems sessions
+Working examples related to Distributed Systems sessions.
