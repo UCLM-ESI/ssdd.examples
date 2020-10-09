@@ -4,6 +4,10 @@ Depends
 - grpcio (pip3)
 - grpcio-tools (pip3)
 
+or:
+
+- python3-grpc-tools (deb)
+
 
 Compile proto
 -------------

@@ -15,5 +15,5 @@ if len(sys.argv) != 2:
 server = sys.argv[1]
 channel = grpc.insecure_channel('{}:2000'.format(server))
 stub = hello_pb2_grpc.HelloStub(channel)
-message = hello_pb2.PrintRequest(message='felix')
+message = hello_pb2.PrintRequest(message='hello')
 stub.write(message)
