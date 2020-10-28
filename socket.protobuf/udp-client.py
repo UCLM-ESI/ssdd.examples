@@ -9,7 +9,7 @@ if len(sys.argv) < 2:
     exit()
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-destination = (sys.argv[1], 2000)
+destination = (sys.argv[1], 2002)
 
 reading = sensor_pb2.Reading()
 reading.Id = 1
