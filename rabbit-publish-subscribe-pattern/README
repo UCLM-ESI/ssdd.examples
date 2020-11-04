@@ -20,8 +20,8 @@ System overview:
 
 	binding_key
 P --> E ------>	|||||||t3|t2|t1| 	--> S1 gets t1, t2
-	|	     twitter1
-	|----->	|||||||t3|t2|t1| 	--> S2 gets t1, t3
+      |	     twitter1
+	  |----->	|||||||t3|t2|t1| 	--> S2 gets t1, t3
 	binding_key  twitter2
 
 Observations:
@@ -44,7 +44,7 @@ publisher:
 
 
 Example:
-	   python3 publisher.py "hoy.cr" "Ven al cine gratis"
+	   python3 publisher.py "hoy.cr" "Ven gratis al cine"
 	   python3 publisher.py "mañana.madrid" "Ven al teatro por 10 euros"
 	   python3 subscriber.py "*.madrid"
 	   python3 subscriber.py "hoy.*"
