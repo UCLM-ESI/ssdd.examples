@@ -1,8 +1,8 @@
 Depends
 -------
 
-- python-celery-common
-- python-celery
+- python3-celery-common
+- python3-celery
 
 
 Run worker
