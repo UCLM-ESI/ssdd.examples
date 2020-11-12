@@ -18,8 +18,8 @@ System overview:
 
 P --> E ------>	|||||||t3|t2|t1| --> S1 gets t1, t2, t3
       |	  twitter1
-	  +----->	|||||||t3|t2|t1| --> S2 gets t1, t2, t3
-		  twitter2
+      +----->	|||||||t3|t2|t1| --> S2 gets t1, t2, t3
+	  twitter2
 
 Observations:
 	You need three consoles, one for each participant

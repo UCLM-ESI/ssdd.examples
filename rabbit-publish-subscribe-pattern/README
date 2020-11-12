@@ -21,7 +21,7 @@ System overview:
 	binding_key
 P --> E ------>	|||||||t3|t2|t1| 	--> S1 gets t1, t2
       |	     twitter1
-	  |----->	|||||||t3|t2|t1| 	--> S2 gets t1, t3
+      |----->	|||||||t3|t2|t1| 	--> S2 gets t1, t3
 	binding_key  twitter2
 
 Observations:
@@ -39,8 +39,9 @@ where:
 
 publisher:
 	python3 publisher.py <routing_key> <my_tweet>
-	where:
-		routing_key: a list of words delimited by dots in the format "word1.word2. ... .wordn"
+
+where:
+	routing_key: a list of words delimited by dots in the format "word1.word2. ... .wordn"
 
 
 Example:

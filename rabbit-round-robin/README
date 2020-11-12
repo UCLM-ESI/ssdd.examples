@@ -14,8 +14,8 @@ System overview:
 	Message queue: job
 
 	P --> |||||||j3|j2|j1| 	--> W1 gets j1
-          job               --> W2 gets j2
-                             -> W1 gets j3
+              job               --> W2 gets j2
+                                 -> W1 gets j3
 
 Observations:
 	You need three consoles, one for each participant
