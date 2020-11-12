@@ -10,7 +10,6 @@ api = Api(app)
 
 devices = {}
 
-
 class Device(Resource):
     def get(self, device_id):
         return {device_id: devices[device_id]}

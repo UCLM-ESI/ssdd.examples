@@ -1,14 +1,14 @@
 Depends
 -------
 
-- python-celery-common
-- python-celery
+- python3-celery-common
+- python3-celery
 
 
 Run worker
 ----------
 
-$ celery worker -A tasks
+$ celery -A tasks worker
 
 
 Run client
