@@ -9,7 +9,7 @@ from tools import TCPServer, UDPServer, TCPChecker, UDPChecker
 
 
 if __name__ == '__main__':
-    TCPServer(2000).start()
-    UDPServer(2000).start()
-    TCPChecker(2001).start()
-    UDPChecker(2001).start()
+    TCPServer(4000).start()
+    UDPServer(4000).start()
+    TCPChecker(4001).start()
+    UDPChecker(4001).start()
