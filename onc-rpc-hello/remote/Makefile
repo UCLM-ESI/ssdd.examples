@@ -22,8 +22,8 @@ STUBS = msg_clnt.c msg_svc.c msg.h
 
 # Compiler flags
 
-CFLAGS += -g
-LDLIBS += -lnsl
+CFLAGS += -g -I/usr/include/ntirpc
+LDLIBS += -lnsl -l ntirpc
 RPCGENFLAGS =
 
 # Targets
