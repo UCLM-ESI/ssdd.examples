@@ -43,6 +43,9 @@ def check_local_tcp_server(server):
         result, msg = data.split(':')
         if result == OK:
             return OK, ''
+    except socket.timeout as e:
+        print("TCP server timeout")
+        return FAIL, str(e)
     except ConnectionError as e:
         print("TCP server error:", e)
         return FAIL, str(e)

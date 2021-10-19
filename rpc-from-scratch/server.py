@@ -7,6 +7,7 @@ import struct
 FACTORIAL = 0
 POWER = 1
 
+
 def factorial(n):
     if n == 0:
         return 1
