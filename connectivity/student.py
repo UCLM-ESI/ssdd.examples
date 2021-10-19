@@ -93,7 +93,7 @@ if __name__ == "__main__":
         "UDP local server ": check_local_udp_server(server)
     }
 
-    print()
+    print("\nResults:")
     for test, value in results.items():
         print("- {}: {}".format(test, value[0]))
 
