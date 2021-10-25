@@ -4,12 +4,14 @@
 from requests import put, get
 
 
-device_id = "device1"
-device_response = get(f'http://localhost:5000/{device_id}')
+print(get('http://localhost:5000/').json())
 
-if device_response.status_code == 404 or device_response.json()[device_id] == 'disabled':
+device_id = "door1"
+response = get(f'http://localhost:5000/{device_id}')
+
+if response.status_code == 404 or \
+   response.json()[device_id] == 'disabled':
     new_status = 'enabled'
-
 else:
     new_status = 'disabled'
 
