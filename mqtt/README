@@ -20,4 +20,4 @@ $ ./subscriber.py
 Run publisher
 -------------
 
-$ ./publisher.py
+$ ./publisher-temperature.py
