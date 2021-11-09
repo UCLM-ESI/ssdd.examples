@@ -1,0 +1,67 @@
+* Descargar el instalador desde https://www.rti.com/free-trial/shapes-demo e instalar
+* Arrancar la aplicación desde ~/rti_shapes_demo-6.0.1/bin
+
+notas:
+- La partición define un "canal virtual" aislado
+- El tipo de figura representa el Topic
+- El color representa la key
+
+ejercicios:
+4.1. Publish-subscribe
+   Crear varios publicadores y suscriptores para comprobar cómo la información (flujos) se
+   propaga. Se puede fijar la posición de una figura con el ratón en el publicador para
+   comprobar que se está actualizando en tiempo real.
+   El suscriptor muestra 5 copias anteriores (History)
+
+4.2. Multiple instances
+   En la ventana 1, crea un suscriptor para círculos con History=1
+   En la ventana 2, publica un círculo rojo
+   En la ventana 3, publica un círculo rojo
+
+   En la ventaja 1, se producen saltos, porque está representando datos de 2 fuentes para el mismo flujo.
+
+4.3. Ownership
+   El ejemplo 5 muestra también este concepto.
+
+4.4. Failure detection
+   La propiedad Deadline es un compromiso de publicador para proporcinar un nuevo evento en ese plazo.
+   En la ventana 1, publica un cuadro cyan con Deadline=200
+   En la ventana 2, crea un suscriptor de cuadros con Deadline=4000
+
+   En la ventana 1, pulsar "Pause Publishing"
+   En la ventana 2, pestaña Output, aparecerá un aviso: "Requested deadline missed for Square"
+
+4.5. Failover
+   En la ventana 1, publica un circulo rojo con Strength=1 y Deadline=400
+   En la ventana 2, publica un circulo rojo con Strength=3 y Deadline=400
+   En la ventana 3, crea un suscriptor para círculos rojos en modo "Exclusive"
+
+   El suscriptor representa el circulo del publicador 2 por tener mayor Strength.  Pulsa
+   "Pause Publishing" en el publicador 2. Después 2000 ms, el suscriptor empezará a
+   mostrar los datos del publicador 1.
+
+5.1. Content-filter
+   En la ventana 1, publica un circulo.
+   En la ventana 2, crea un suscriptor con "Content filter topic"
+
+   El suscriptor solo recibe mensajes si las coordenadas del evento corresponden al filtro.
+
+5.2. Filespan
+   En la ventana 1, publica un circulo con History=100 y Lifespan 1000ms
+   En la ventana 2, crea un suscritpor de círuclos con History=100
+
+   Solo los datos (posiciones) más recientes de 1s son consideradas válidas. Si pausas el
+   publicador, el suscriptor borrará los datos expirados.
+
+5.3. Durability
+   Permite a un suscriptor recibir datos que se generaron antes de su instanciación.
+   En la ventana 1, publica un círculo con Transient Local durability, Reliability y History=200
+   Espera unos segundos
+   En la ventana 2, crea un suscriptor con Transient Local durability, Reliability y History=200
+
+5.4. Time-based filtering
+   El suscriptor puede definir un data-rate menor al que utiliza el publicador.
+   En la ventana 1, publica un circulo.
+   En la ventana 2, crea un suscriptor con History 1 y Time based filter=1000 ms
+
+   El suscriptor solo recibe actualizaciones cada segundo, aunque el publicador emita a mayor tasa.
