@@ -9,13 +9,17 @@ from flask_restful import Resource, Api, abort
 app = Flask(__name__)
 api = Api(app)
 
-devices = dict()
+devices = {
+    'switch1': 'enabled',
+    'light1': 'disabled',
+}
 
 
 class Device(Resource):
     def get(self, device_id):
         if device_id not in devices:
             abort(404)
+
         return {device_id: devices.get(device_id)}
 
     def put(self, device_id):
@@ -23,6 +27,12 @@ class Device(Resource):
         return {device_id: devices[device_id]}
 
 
+class DeviceList(Resource):
+    def get(self):
+        return devices
+
+
+api.add_resource(DeviceList, '/')
 api.add_resource(Device, '/<string:device_id>')
 
 
