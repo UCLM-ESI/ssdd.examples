@@ -5,6 +5,7 @@ import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
+channel.queue_delete(queue='rpc_queue')
 channel.queue_declare(queue='rpc_queue')
 
 
