@@ -14,18 +14,23 @@ System overview:
 	Message queue: job
 
 	P --> |||||||j3|j2|j1| 	--> W1 gets j1
-              job               --> W2 gets j2
-                                 -> W1 gets j3
+              job           --> W2 gets j2
+                            --> W1 gets j3
 
 Observations:
 	You need three consoles, one for each participant
 
 worker1:
-	python3 worker.py
+	$ python3 worker.py
 
 worker2:
-	python3 worker.py
+	$ python3 worker.py
 
 producer:
-	python3 producer.py <a_string_with_an arbitrary_number_of_dots>
-	Example: python3 producer "job 1..."
+	$ python3 producer.py <a_string_with_an_arbitrary_number_of_dots>
+
+	Number of dots indicates the time (in seconds) that job require the job to complete
+	Example: python3 producer job1.... job2. job3...
+	    - job1 requires 3 seconds
+		- job2 requires 1 seconds
+		- job3 requires 3 seconds

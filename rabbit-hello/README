@@ -15,8 +15,8 @@ System overview:
 
 Consumer:
 
-	python3 receiver.py
+	$ python3 consumer.py
 
 Producer:
 
-	python3 sender.py
+	$ python3 producer.py

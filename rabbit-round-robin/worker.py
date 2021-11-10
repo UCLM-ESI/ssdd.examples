@@ -4,6 +4,8 @@
 import time
 import pika
 
+STRICT_ROUND_ROBIN = True
+
 
 def callback(ch, method, properties, body):
     print("[x] Received %r " % (body.decode("UTF-8")))
@@ -16,7 +18,11 @@ connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 channel.queue_declare(queue='task_queue', durable=True)
 
-channel.basic_qos(prefetch_count=1)  # "use idle workers instead strict RR"
+if STRICT_ROUND_ROBIN:
+    channel.basic_qos()
+else:
+    channel.basic_qos(prefetch_count=1)
+
 channel.basic_consume(callback, queue='task_queue')
 print("[*] Waiting for messages. Press Ctrl+C to exit")
 channel.start_consuming()
