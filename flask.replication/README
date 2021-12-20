@@ -1,0 +1,23 @@
+Depends
+-------
+
+- python3-flask
+
+
+Run server
+----------
+
+$ ./server.py
+
+
+Run python client
+-----------------
+
+$ curl http://localhost:5000/ping
+
+
+Run browser
+-----------
+
+(run client before)
+$ firefox localhost:5000/ping
