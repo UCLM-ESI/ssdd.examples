@@ -3,13 +3,10 @@
 # This example is based on https://github.com/grpc/grpc/tree/v1.6.x/examples/python/helloworld
 
 from concurrent import futures
-import time
 
 import grpc
 import math_pb2
 import math_pb2_grpc
-
-DAY_SECONDS = 24 * 60 * 60
 
 
 class Math(math_pb2_grpc.MathServicer):
@@ -30,8 +27,7 @@ server.add_insecure_port('[::]:2000')
 server.start()
 
 try:
-    while True:
-        time.sleep(DAY_SECONDS)
+    server.wait_for_termination()
 
 except KeyboardInterrupt:
     server.stop(0)
