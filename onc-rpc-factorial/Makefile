@@ -25,10 +25,10 @@ RPCGENFLAGS =
 all : $(CLIENT) $(SERVER)
 
 $(CLIENT): $(CLIENT_OBJECTS)
-	$(LINK.c) $(LDLIBS) -o $@ $^
+	$(LINK.c) -o $@ $^ $(LDLIBS)
 
 $(SERVER) : $(SERVER_OBJECTS)
-	$(LINK.c) $(LDLIBS) -o $@ $^
+	$(LINK.c) -o $@ $^ $(LDLIBS)
 
 $(CLIENT_OBJECTS) $(SERVER_OBJECTS): $(XDR_HEADER)
 
