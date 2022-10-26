@@ -14,7 +14,7 @@ messageprog_1(char *host, char *printmessage_1_arg )
     int  *result_1;
 
 #ifndef	DEBUG
-    clnt = clnt_ncreate (host, MESSAGE_PROG, PRINTMESSAGE_VERS, "udp");
+    clnt = clnt_create (host, MESSAGE_PROG, PRINTMESSAGE_VERS, "udp");
     if (clnt == NULL) {
         clnt_pcreateerror (host);
 	exit (1);
