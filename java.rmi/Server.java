@@ -6,8 +6,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class Server implements Hello {
-    public Server() {}
-
     public String sayHello() {
         return "Hello, world!";
     }
@@ -15,7 +13,7 @@ public class Server implements Hello {
     public static void main(String args[]) {
         try {
             Server obj = new Server();
-            Hello stub = (Hello) UnicastRemoteObject.exportObject(obj, 0);
+            Hello stub = (Hello) UnicastRemoteObject.exportObject(obj, 5000);
 
             // Bind the remote object's stub in the registry
             Registry registry = LocateRegistry.getRegistry();
