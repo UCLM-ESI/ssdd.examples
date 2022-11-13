@@ -1,9 +1,19 @@
 # Extracted from: //www.rabbitmq.com/install-debian.html
 
-Instalacion en Debian/Ubuntu:
+Install Debian/Ubuntu:
 
-- apt install rabbitmq-server # queue manager
-- apt install python3-pika    # version 0.11.0
+$ apt install rabbitmq-server # queue manager
+$ apt install python3-pika    # version 0.11.0
+
+Admin plugin
+
+$ sudo rabbitmq-plugins enable rabbitmq_management
+$ sudo service rabbitmq-server restart
+
+And now you can use rabbitmqadmin
+
+$ rabbitmqadmin list queues
+$ rabbitmqadmin delete queue name=<queue-name>
 
 System overview:
 	Producer (P)
