@@ -23,6 +23,6 @@ if STRICT_ROUND_ROBIN:
 else:
     channel.basic_qos(prefetch_count=1)
 
-channel.basic_consume(callback, queue='task_queue')
+channel.basic_consume(on_message_callback=callback, queue='task_queue')
 print("[*] Waiting for messages. Press Ctrl+C to exit")
 channel.start_consuming()
