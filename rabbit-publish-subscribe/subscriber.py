@@ -4,19 +4,23 @@
 import time
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'));
+connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel();
-channel.exchange_declare(exchange='twitter', exchange_type='fanout');
-result = channel.queue_declare(exclusive='True')
+channel.exchange_declare(exchange='twitter', exchange_type='fanout')
+result = channel.queue_declare(queue='', exclusive='True')
 queue_name = result.method.queue
 
-channel.queue_bind(exchange='twitter', queue=queue_name);
+channel.queue_bind(exchange='twitter', queue=queue_name)
 
-print("[*] Waiting for messages. To exit press Ctrl+");
+print("[*] Waiting for messages. To exit press Ctrl+")
 
 def callback(ch, method, properties, body):
-	print("[x] Received %r " % (body.decode("UTF-8")));
+	print("[x] Received %r " % (body.decode("UTF-8")))
 
-channel.basic_consume(callback, queue=queue_name, no_ack=True);
+channel.basic_consume(
+	on_message_callback=callback,
+	queue=queue_name,
+	auto_ack=True
+)
 
-channel.start_consuming();
+channel.start_consuming()
