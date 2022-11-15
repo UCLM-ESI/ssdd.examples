@@ -13,7 +13,6 @@ def callback(client, userdata, message):
     print(decoded["value"])
 
 
-
 subscriber = mqtt.Client()
 subscriber.on_message = callback
 subscriber.connect('localhost')

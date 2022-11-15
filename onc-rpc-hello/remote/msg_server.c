@@ -11,7 +11,7 @@ printmessage_1_svc(char **argp, struct svc_req *rqstp)
 {
     static int result;
 
-    fprintf(stderr,"Client sent: '%s'\n",*argp);
+    fprintf(stderr, "Client sent: '%s'\n",*argp);
 
     return &result;
 }

@@ -4,7 +4,9 @@
 import pika
 import time
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+localhost = pika.ConnectionParameters(host='localhost')
+connection = pika.BlockingConnection(localhost)
+
 channel = connection.channel()
 channel.queue_declare(queue="hello")
 

@@ -5,4 +5,5 @@ app = Celery('tasks', backend='rpc://', broker='pyamqp://')
 
 @app.task
 def add(x, y):
+    print("invocado")
     return x + y

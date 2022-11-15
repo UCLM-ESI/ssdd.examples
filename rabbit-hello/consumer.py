@@ -8,7 +8,9 @@ def callback(ch, method, properties, body):
     print("[x] Received: %r" % body.decode("UTF-8"))
 
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+localhost = pika.ConnectionParameters('localhost')
+connection = pika.BlockingConnection(localhost)
+
 channel = connection.channel()
 channel.queue_declare(queue='hello')
 

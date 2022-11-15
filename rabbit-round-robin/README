@@ -31,6 +31,6 @@ producer:
 
 	Number of dots indicates the time (in seconds) that job require the job to complete
 	Example: python3 producer job1.... job2. job3...
-	    - job1 requires 3 seconds
-		- job2 requires 1 seconds
-		- job3 requires 3 seconds
+      - job1 requires 4 seconds
+      - job2 requires 1 seconds
+      - job3 requires 3 seconds

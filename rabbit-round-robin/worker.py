@@ -4,7 +4,7 @@
 import time
 import pika
 
-STRICT_ROUND_ROBIN = True
+STRICT_ROUND_ROBIN = False
 
 
 def callback(ch, method, properties, body):
