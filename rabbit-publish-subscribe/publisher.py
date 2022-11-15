@@ -4,14 +4,13 @@
 import sys
 import pika
 
-connection=pika.BlockingConnection(pika.ConnectionParameters(host='localhost'));
-channel=connection.channel();
+connection=pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+channel=connection.channel()
 
 channel.exchange_declare(exchange='twitter', exchange_type='fanout')
 
-
 message=' '.join(sys.argv[1:]) or "Hello world!"
-channel.basic_publish(exchange='twitter', routing_key='', body=message);
+channel.basic_publish(exchange='twitter', routing_key='', body=message)
 
-print("[x] Sent: ", message);
-connection.close();
+print("[x] Sent: ", message)
+connection.close()

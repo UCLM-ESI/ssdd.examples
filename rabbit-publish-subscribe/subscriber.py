@@ -5,7 +5,7 @@ import time
 import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel();
+channel = connection.channel()
 channel.exchange_declare(exchange='twitter', exchange_type='fanout')
 result = channel.queue_declare(queue='', exclusive='True')
 queue_name = result.method.queue
