@@ -37,11 +37,12 @@ En la ventana 2, pestaña Output, aparecerá un aviso: "Requested deadline misse
 4.5. Failover
 En la ventana 1, publica un circulo rojo con Strength=1 y Deadline=400
 En la ventana 2, publica un circulo rojo con Strength=3 y Deadline=400
-En la ventana 3, crea un suscriptor para círculos rojos en modo "Exclusive"
+En la ventana 3, crea un suscriptor para círculos rojos en modo "Exclusive" con Deadline=2000
 
 El suscriptor representa el circulo del publicador 2 por tener mayor Strength. Pulsa
-"Pause Publishing" en el publicador 2. Después 2000 ms, el suscriptor empezará a
-mostrar los datos del publicador 1.
+"Pause Publishing" en el publicador 2. Después 2000 ms, el suscriptor empezará a mostrar
+los datos del publicador 1. Al pulsar "Resume Publishing" el subscriptor vuelve a
+representar los eventos del publicador 2.
 
 5.1. Content-filter
 En la ventana 1, publica un circulo.
