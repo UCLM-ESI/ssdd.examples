@@ -18,3 +18,5 @@ else:
 
 put(f'http://localhost:5000/{device_id}', data={'status': new_status})
 print(get(f'http://localhost:5000/{device_id}').json())
+
+print(get('http://localhost:5000/').json())

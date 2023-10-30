@@ -6,12 +6,13 @@ import pika
 
 
 def send_message(message):
-    channel.basic_publish(exchange='',
-                        routing_key='task_queue',
-                        body=message,
-                        properties=pika.BasicProperties(
-                            delivery_mode=2  # make message persistent
-                        ))
+    channel.basic_publish(
+        exchange='',
+        routing_key='task_queue',
+        body=message,
+        properties=pika.BasicProperties(
+            delivery_mode=2  # make message persistent
+        ))
 
     print("[x] Sent: ", message)
 
