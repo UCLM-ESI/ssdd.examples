@@ -18,7 +18,7 @@ def take_reading():
     }
 
 
-publisher = mqtt.Client()
+publisher = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 publisher.connect('127.0.0.1')
 
 while 1:

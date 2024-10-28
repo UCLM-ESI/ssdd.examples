@@ -13,7 +13,7 @@ def callback(client, userdata, message):
     print(decoded["value"])
 
 
-subscriber = mqtt.Client()
+subscriber = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 subscriber.on_message = callback
 subscriber.connect('localhost')
 subscriber.subscribe('temperature/+')
