@@ -1,13 +1,12 @@
 #!/usr/bin/make -f
-# -*- mode:makefile -*-
 
 all:
 
 run-server:
-	./Server.py --Ice.Config=Server.config | tee proxy.out
+	./server.py --Ice.Config=server.config | tee proxy.out
 
 run-client:
-	./Client.py '$(shell head -1 proxy.out)'
+	./client.py '$(shell head -1 proxy.out)'
 
 clean:
 	$(RM) *~ proxy.out

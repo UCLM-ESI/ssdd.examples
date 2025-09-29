@@ -1,9 +1,8 @@
 #!/usr/bin/env -S python3 -u
-# -*- coding: utf-8 -*-
 
 import sys
 import Ice
-Ice.loadSlice('Printer.ice')
+Ice.loadSlice('printer.ice')
 import Example
 
 
@@ -15,9 +14,6 @@ class PrinterI(Example.Printer):
         sys.stdout.flush()
         self.n += 1
 
-    def hola(self):
-        pass
-
 
 class Server(Ice.Application):
     def run(self, argv):
@@ -26,10 +22,8 @@ class Server(Ice.Application):
 
         adapter = broker.createObjectAdapter("PrinterAdapter")
         proxy = adapter.add(servant, broker.stringToIdentity("printer1"))
-        servant.hola()
 
-        print(proxy)
-        sys.stdout.flush()
+        print(proxy, flush=True)
 
         adapter.activate()
         self.shutdownOnInterrupt()
