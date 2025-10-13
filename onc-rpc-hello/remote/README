@@ -1,6 +1,7 @@
 Depends
 -------
 
+- libtirpc-dev (deb)
 - rpcbind (deb)
 
 
