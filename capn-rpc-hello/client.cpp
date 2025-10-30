@@ -2,8 +2,12 @@
 #include "hello.capnp.h"
 #include <iostream>
 
-int main() {
-    capnp::EzRpcClient client("localhost:4000");
+int main(int argc, char* argv[]) {
+    std::string address = (argc > 1) ? argv[1] : "127.0.0.1:4000";
+
+    std::cout << "- Connecting to " << address << std::endl;
+
+    capnp::EzRpcClient client(address);
     TextProcessor::Client textProcessor = client.getMain<TextProcessor>();
 
     auto request = textProcessor.upperRequest();

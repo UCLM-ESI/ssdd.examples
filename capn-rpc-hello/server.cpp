@@ -22,9 +22,14 @@ public:
     }
 };
 
-int main() {
+int main(int argc, char* argv[]) {
+    std::string port = (argc > 1) ? argv[1] : "4000";
+    std::string address = "0.0.0.0:" + port;
+
+    std::cout << "- Server listening on " << address << std::endl;
+
     capnp::EzRpcServer server(
-        kj::heap<TextProcessorI>(), "localhost:4000");
+        kj::heap<TextProcessorI>(), address);
     auto& waitScope = server.getWaitScope();
     kj::NEVER_DONE.wait(waitScope);
 }
