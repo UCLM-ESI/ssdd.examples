@@ -5,7 +5,7 @@
 int main(int argc, char* argv[]) {
     std::string address = (argc > 1) ? argv[1] : "127.0.0.1:4000";
 
-    std::cout << "- Connecting to " << address << std::endl;
+    std::cout << "- Client connecting to: " << address << std::endl;
 
     capnp::EzRpcClient client(address);
     TextProcessor::Client textProcessor = client.getMain<TextProcessor>();
