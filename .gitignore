@@ -7,7 +7,3 @@
 __pycache__
 \#**\#
 proxy.out
-ice/Printer_ice.py
-onc-rpc-hello/remote/msg.h
-onc-rpc-hello/remote/msg_clnt.c
-onc-rpc-hello/remote/msg_svc.c
