@@ -1,5 +1,5 @@
-@0xb0a455f5a4a4e5db;
+@0x8b96e1f756a41043;
 
-interface Hello {
-  sendMsg @0 (message :Text) -> (result :Text);
+interface TextProcessor {
+  upper @0 (message :Text) -> (result :Text);
 }

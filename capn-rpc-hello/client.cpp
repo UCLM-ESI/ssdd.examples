@@ -4,9 +4,9 @@
 
 int main() {
     capnp::EzRpcClient client("localhost:4000");
-    Hello::Client hello = client.getMain<Hello>();
+    TextProcessor::Client textProcessor = client.getMain<TextProcessor>();
 
-    auto request = hello.sendMsgRequest();
+    auto request = textProcessor.upperRequest();
     request.setMessage("Hello world");
 
     auto& waitScope = client.getWaitScope();
