@@ -10,7 +10,9 @@ int main() {
     request.setMessage("Hello world");
 
     auto& waitScope = client.getWaitScope();
-    request.send().wait(waitScope);
+    auto response = request.send().wait(waitScope);
 
-    std::cout << "Client: RPC completed" << std::endl;
+    // Obtener y mostrar el resultado
+    auto result = response.getResult();
+    std::cout << "Server replies: " << result.cStr() << std::endl;
 }
