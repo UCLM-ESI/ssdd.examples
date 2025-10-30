@@ -8,7 +8,7 @@ Depends
 Compile proto
 -------------
 
-    $ capnp compile -o py hello.capnp
+    $ capnp compile -o py upper.capnp
 
 
 Run server

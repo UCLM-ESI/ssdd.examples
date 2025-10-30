@@ -2,8 +2,8 @@ CXX := g++
 CXXFLAGS := -std=c++20 -Wall
 LIBS := -lcapnp-rpc -lcapnp -lkj -lkj-async
 
-SCHEMA := hello.capnp
-SCHEMA_GEN := hello.capnp.c++ hello.capnp.h
+SCHEMA := upper.capnp
+SCHEMA_GEN := upper.capnp.c++ upper.capnp.h
 
 SERVER := server
 CLIENT := client
@@ -15,10 +15,10 @@ $(SCHEMA_GEN): $(SCHEMA)
 	capnp compile -oc++ $(SCHEMA)
 
 $(SERVER): server.cpp $(SCHEMA_GEN)
-	$(CXX) $(CXXFLAGS) server.cpp hello.capnp.c++ -o $(SERVER) $(LIBS)
+	$(CXX) $(CXXFLAGS) server.cpp upper.capnp.c++ -o $(SERVER) $(LIBS)
 
 $(CLIENT): client.cpp $(SCHEMA_GEN)
-	$(CXX) $(CXXFLAGS) client.cpp hello.capnp.c++ -o $(CLIENT) $(LIBS)
+	$(CXX) $(CXXFLAGS) client.cpp upper.capnp.c++ -o $(CLIENT) $(LIBS)
 
 run-server: $(SERVER)
 	./$(SERVER)

@@ -3,7 +3,7 @@
 #include <string>
 #include <ranges>
 #include <capnp/ez-rpc.h>
-#include "hello.capnp.h"
+#include "upper.capnp.h"
 
 class TextProcessorI final: public TextProcessor::Server {
 public:

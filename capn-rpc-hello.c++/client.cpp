@@ -1,5 +1,5 @@
 #include <capnp/ez-rpc.h>
-#include "hello.capnp.h"
+#include "upper.capnp.h"
 #include <iostream>
 
 int main(int argc, char* argv[]) {
@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     TextProcessor::Client textProcessor = client.getMain<TextProcessor>();
 
     auto request = textProcessor.upperRequest();
-    request.setMessage("Hello world");
+    request.setMessage("hello world");
 
     auto& waitScope = client.getWaitScope();
     auto response = request.send().wait(waitScope);
