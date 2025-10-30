@@ -1,0 +1,23 @@
+Depends
+-------
+
+- capnproto (deb)
+- libcapnp-dev
+
+
+Compile proto
+-------------
+
+    $ capnp compile -o py hello.capnp
+
+
+Run server
+----------
+
+$ ./server.py
+
+
+Run client
+----------
+
+$ ./client localhost
