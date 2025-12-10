@@ -19,4 +19,4 @@ if __name__ == '__main__':
     n = int(sys.argv[1])
 
     for i, vs in enumerate(maekawa_voting_sets(n)):
-        print(f"Node {i:>2}: Voting Set {vs}")
+        print(f"Process {i:>2} voting set {vs}")
