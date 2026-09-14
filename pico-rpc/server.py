@@ -15,6 +15,6 @@ class MathI:
         return base ** exp
 
 
-dispatcher = Dispatcher()
+dispatcher = Dispatcher(port=2000)
 dispatcher.register(math_server_stub, MathI())
-dispatcher.run(port=2000)
+dispatcher.run()

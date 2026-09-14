@@ -53,7 +53,8 @@ class Interface:
 
 
 class Dispatcher:
-    def __init__(self):
+    def __init__(self, port):
+        self.port = port
         self.stubs = {}
 
     def register(self, stub_module, implementation):
@@ -67,10 +68,10 @@ class Dispatcher:
         result = stub(args)
         sock.sendall(result)
 
-    def run(self, port, backlog=10):
+    def run(self, backlog=10):
         sock = socket.socket()
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        sock.bind(('', port))
+        sock.bind(('', self.port))
         sock.listen(backlog)
         print("Server ready: {}".format(sock.getsockname()))
 
