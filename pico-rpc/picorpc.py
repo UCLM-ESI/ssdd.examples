@@ -3,6 +3,7 @@
 # pico-rpc runtime: IDL primitives to describe a remote interface, plus
 # the Dispatcher used by generated server stubs to route incoming calls.
 
+import functools
 import inspect
 import socket
 from collections import namedtuple
@@ -14,6 +15,8 @@ uint8 = Annotated[int, WireFormat('uint8', 'B')]
 uint64 = Annotated[int, WireFormat('uint64', 'Q')]
 
 Param = namedtuple('Param', ['name', 'type'])
+
+MAX_MESSAGE_SIZE = 128  # fixed-size recv() buffer for both requests and replies
 
 
 class Procedure(namedtuple('Procedure', ['name', 'params', 'result'])):
@@ -59,10 +62,10 @@ class Dispatcher:
 
     def register(self, stub_module, implementation):
         for id_, stub in stub_module.STUBS.items():
-            self.stubs[id_] = lambda args, stub=stub: stub(args, implementation)
+            self.stubs[id_] = functools.partial(stub, implementation=implementation)
 
     def dispatch(self, sock):
-        request = sock.recv(128)
+        request = sock.recv(MAX_MESSAGE_SIZE)
         function_id, args = request[0], request[1:]
         stub = self.stubs[function_id]
         result = stub(args)

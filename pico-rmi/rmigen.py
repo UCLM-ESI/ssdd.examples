@@ -6,7 +6,7 @@
 import sys
 import importlib.util
 
-from picormi import Interface, IDENTITY_SIZE
+from picormi import Interface, IDENTITY_SIZE, MAX_MESSAGE_SIZE
 
 
 GENERATED_HEADER = '''\
@@ -18,7 +18,7 @@ PROXY_PREAMBLE = '''\
 import socket
 import struct
 
-from picormi import encode_identity
+from picormi import encode_identity, MAX_MESSAGE_SIZE
 
 
 class {name}Proxy:
@@ -36,7 +36,7 @@ PROXY_METHOD = '''
         request = struct.pack('{request_fmt}', {request_values})
         sock.sendall(request)
 
-        reply = sock.recv(128)
+        reply = sock.recv(MAX_MESSAGE_SIZE)
         result = struct.unpack('{result_fmt}', reply)[0]
 
         sock.close()

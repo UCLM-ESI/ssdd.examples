@@ -24,6 +24,7 @@ uint64 = Annotated[int, WireFormat('uint64', 'Q')]
 Param = namedtuple('Param', ['name', 'type'])
 
 IDENTITY_SIZE = 16
+MAX_MESSAGE_SIZE = 128  # fixed-size recv() buffer for both requests and replies
 
 def encode_identity(identity):
     raw = identity.encode('utf-8')
@@ -88,7 +89,7 @@ class ObjectAdapter:
         self.servants[identity] = servant
 
     def dispatch(self, sock):
-        request = sock.recv(128)
+        request = sock.recv(MAX_MESSAGE_SIZE)
         identity = decode_identity(request[:IDENTITY_SIZE])
         function_id, args = request[IDENTITY_SIZE], request[IDENTITY_SIZE + 1:]
 

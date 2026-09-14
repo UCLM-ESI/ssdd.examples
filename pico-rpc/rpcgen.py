@@ -6,7 +6,7 @@
 import sys
 import importlib.util
 
-from picorpc import Interface
+from picorpc import Interface, MAX_MESSAGE_SIZE
 
 
 GENERATED_HEADER = '''\
@@ -17,6 +17,8 @@ GENERATED_HEADER = '''\
 STUB_PREAMBLE = '''\
 import socket
 import struct
+
+from picorpc import MAX_MESSAGE_SIZE
 
 
 class {name}Stub:
@@ -33,7 +35,7 @@ STUB_METHOD = '''
         request = struct.pack('{request_fmt}', {request_values})
         sock.sendall(request)
 
-        reply = sock.recv(128)
+        reply = sock.recv(MAX_MESSAGE_SIZE)
         result = struct.unpack('{result_fmt}', reply)[0]
 
         sock.close()
