@@ -14,12 +14,11 @@
 import inspect
 import socket
 from collections import namedtuple
-from typing import Annotated, get_args
 
-WireFormat = namedtuple('WireFormat', ['name', 'fmt'])  # fmt: struct format char
-
-uint8 = Annotated[int, WireFormat('uint8', 'B')]
-uint64 = Annotated[int, WireFormat('uint64', 'Q')]
+# uint8/uint64 double as struct format characters and as the parameter/return
+# annotations read by _method() below to build the wire format of a call.
+uint8 = 'B'
+uint64 = 'Q'
 
 Param = namedtuple('Param', ['name', 'type'])
 
@@ -40,22 +39,18 @@ def decode_identity(raw):
 class Method(namedtuple('Method', ['name', 'params', 'result'])):
     @property
     def params_fmt(self):
-        return ''.join(p.type.fmt for p in self.params)
+        return ''.join(p.type for p in self.params)
 
     @property
     def result_fmt(self):
-        return self.result.fmt
-
-
-def _wire_format(annotation):
-    return next(meta for meta in get_args(annotation) if isinstance(meta, WireFormat))
+        return self.result
 
 
 def _method(name, function):
     sig = inspect.signature(function)
-    params = [Param(pname, _wire_format(p.annotation)) for pname, p in sig.parameters.items()
+    params = [Param(pname, p.annotation) for pname, p in sig.parameters.items()
               if p.annotation is not inspect.Parameter.empty]
-    return Method(name, params, _wire_format(sig.return_annotation))
+    return Method(name, params, sig.return_annotation)
 
 
 class Interface:
