@@ -71,9 +71,9 @@ def generate_server_stub(interface, idl_path):
         if index > 0:
             lines.append('\n\n')
         lines.append('def {}_stub(args, implementation):\n'.format(procedure.name))
-        lines.append("    params = struct.unpack('{}', args)\n".format(
+        lines.append("    args = struct.unpack('{}', args)\n".format(
             procedure.params_fmt))
-        lines.append('    result = implementation.{}(*params)\n'.format(
+        lines.append('    result = implementation.{}(*args)\n'.format(
             procedure.name))
         lines.append("    return struct.pack('{}', result)\n".format(
             procedure.result_fmt))

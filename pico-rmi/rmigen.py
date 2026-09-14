@@ -77,9 +77,9 @@ def generate_server_stub(interface, idl_path):
     for method in interface.methods:
         lines.append('\n')
         lines.append('    def {}_stub(self, args):\n'.format(method.name))
-        lines.append("        params = struct.unpack('{}', args)\n".format(
+        lines.append("        args = struct.unpack('{}', args)\n".format(
             method.params_fmt))
-        lines.append('        result = self.{}(*params)\n'.format(
+        lines.append('        result = self.{}(*args)\n'.format(
             method.name))
         lines.append("        return struct.pack('{}', result)\n".format(
             method.result_fmt))

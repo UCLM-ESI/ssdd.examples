@@ -60,9 +60,9 @@ def _method(name, function):
 class Interface:
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
-        cls.methods = [_method(name, member)
-                       for name, member in vars(cls).items()
-                       if inspect.isfunction(member)]
+        cls.methods = [
+            _method(name, member) for name, member in vars(cls).items()
+            if inspect.isfunction(member)]
 
     @classmethod
     def method_id(cls, name):
