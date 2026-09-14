@@ -68,11 +68,8 @@ def generate_server_stub(interface, idl_path):
     lines.append('import struct\n\n\n')
 
     for index, procedure in enumerate(interface.procedures):
-        lines.append('{} = {}\n'.format(procedure.name.upper(), index))
-    lines.append('\n')
-
-    for procedure in interface.procedures:
-        lines.append('\n\n')
+        if index > 0:
+            lines.append('\n\n')
         lines.append('def {}_stub(args, implementation):\n'.format(procedure.name))
         lines.append("    params = struct.unpack('{}', args)\n".format(
             procedure.params_fmt))
@@ -81,6 +78,9 @@ def generate_server_stub(interface, idl_path):
         lines.append("    return struct.pack('{}', result)\n".format(
             procedure.result_fmt))
 
+    lines.append('\n\n')
+    for index, procedure in enumerate(interface.procedures):
+        lines.append('{} = {}\n'.format(procedure.name.upper(), index))
     lines.append('\n\n')
     lines.append('STUBS = {\n')
     for procedure in interface.procedures:

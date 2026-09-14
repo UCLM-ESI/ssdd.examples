@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 # Interface definition of the Math service. Run `rpcgen.py` to generate stubs.
 
 from picorpc import Interface, uint8, uint64
