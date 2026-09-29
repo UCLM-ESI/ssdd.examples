@@ -17,7 +17,7 @@ $ make shell
 Compile proto
 -------------
 
-$ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. hello.proto
+$ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. math.proto
 
 
 Run server
@@ -29,7 +29,7 @@ $ ./server.py
 Run client
 ----------
 
-$ ./client.py localhost 2000
+$ ./client.py localhost 5
 
 
 Demo
