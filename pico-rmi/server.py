@@ -17,6 +17,6 @@ class CounterI(Counter):
 
 
 adapter = ObjectAdapter(port=2001)
-adapter.add('c1', CounterI())
-adapter.add('c2', CounterI())
+adapter.add('counter1', CounterI())
+adapter.add('counter2', CounterI())
 adapter.run()

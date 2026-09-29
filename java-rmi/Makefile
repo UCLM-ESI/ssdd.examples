@@ -2,7 +2,7 @@ all:
 	javac *.java
 
 run-server: Server.class Hello.class
-	java -classpath . -Djava.rmi.server.codebase=file:./ Server 
+	java -classpath . Server 
 
 run-client: Client.class Hello.class
 	java  -classpath . Client localhost

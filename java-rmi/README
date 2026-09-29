@@ -1,7 +1,7 @@
 Depends
 -------
 
-- openjdk-14-jdk-headless (deb)
+- default-jdk-headless (>= 17) (deb)
 
 Compile
 -------
@@ -14,14 +14,18 @@ Run registry
 
 $ rmiregistry &
 
+Launch it from this directory.
+
 
 Run server
 ----------
 
-$ java -classpath . -Djava.rmi.server.codebase=file:./ Server 9000
+The server listens on TCP/5000
+
+$ java -classpath . Server
 
 
 Run client
 ----------
 
-$ java  -classpath . Client localhost 9000
+$ java  -classpath . Client localhost

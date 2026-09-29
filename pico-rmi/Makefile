@@ -12,7 +12,7 @@ run-server: generate
 	./server.py
 
 run-client: generate
-	./client.py localhost c1
+	./client.py localhost counter1
 
 clean:
 	$(RM) *~ $(GENERATED)

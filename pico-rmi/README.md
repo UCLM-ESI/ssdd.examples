@@ -30,16 +30,16 @@ Following ZeroC Ice:
 - `counter.idl.py` -- interface definition of the Counter service.
 - `server.py`, `client.py` -- programmer's code: `CounterI` inherits the generated
   `Counter` server stub and implements `increment`/`get`; two independent instances
-  (`c1`, `c2`) are hosted by one adapter.
+  (`counter1`, `counter2`) are hosted by one adapter.
 
 ## Try it
 
 ```
 $ make generate
 $ ./server.py &
-$ ./client.py localhost c1
-$ ./client.py localhost c2
+$ ./client.py localhost counter1
+$ ./client.py localhost counter2
 ```
 
-Note how `c1` and `c2` keep independent counts: they are two different remote objects,
+Note how `counter1` and `counter2` keep independent counts: they are two different remote objects,
 not two calls to the same global implementation.
