@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding:utf-8; mode:python -*-
 # This example is based on https://github.com/grpc/grpc/tree/v1.6.x/examples/python/helloworld
 
 import sys
