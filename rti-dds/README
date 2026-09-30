@@ -1,3 +1,5 @@
+DDS publish/subscribe experiments with the RTI Shapes Demo application (partitions, topics, keys and QoS).
+
 - Descargar el instalador desde https://www.rti.com/free-trial/shapes-demo e instalar
 - Arrancar la aplicación desde ~/rti_shapes_demo-6.0.1/bin
 

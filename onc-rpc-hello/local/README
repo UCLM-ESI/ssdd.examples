@@ -1,3 +1,5 @@
+Local version of the message-printing example, a plain C function call that the remote version turns into an RPC.
+
 Depends: gcc
 
 Compilation

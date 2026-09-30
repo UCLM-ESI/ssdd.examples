@@ -1,3 +1,5 @@
+UDP sensor readings serialized with Protocol Buffers: a client sends a reading and the server decodes and prints it.
+
 Depende
 -------
 

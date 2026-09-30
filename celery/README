@@ -1,3 +1,5 @@
+Celery distributed task queue: a client asks a worker to run an `add` task through a RabbitMQ broker and waits for the result.
+
 Depends
 -------
 

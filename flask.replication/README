@@ -1,3 +1,5 @@
+Minimal Flask web server exposing a `/ping` endpoint, meant to be run in several instances.
+
 Depends
 -------
 

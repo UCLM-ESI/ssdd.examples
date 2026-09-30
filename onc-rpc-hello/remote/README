@@ -1,3 +1,5 @@
+ONC RPC message-printing service defined with rpcgen: a client sends a string and the server prints it.
+
 Depends
 -------
 

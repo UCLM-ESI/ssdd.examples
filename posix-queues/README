@@ -1,3 +1,5 @@
+Producer/consumer exchanging messages through POSIX message queues.
+
 Productor/Consumidor con colas de mensajes POSIX
 
 Uso:

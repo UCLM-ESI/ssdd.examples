@@ -1,3 +1,5 @@
+UDP sensor readings serialized by hand with the `struct` module: a client sends a reading and the server decodes and prints it.
+
 Run server
 ----------
 

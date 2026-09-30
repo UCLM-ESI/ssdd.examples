@@ -1,3 +1,5 @@
+gRPC unary RPC: the client sends a number and the server replies with its factorial.
+
 Depends
 -------
 

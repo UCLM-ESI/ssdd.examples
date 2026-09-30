@@ -1,3 +1,5 @@
+RabbitMQ topic exchange: a publisher sends messages with a routing key and each subscriber receives only those matching its pattern.
+
 # Extracted from: //www.rabbitmq.com/install-debian.html
 
 Instalacion en Debian/Ubuntu:

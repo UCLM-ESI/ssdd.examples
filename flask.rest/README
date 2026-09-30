@@ -1,3 +1,5 @@
+REST API with Flask-RESTful to list, query and update the status of a set of devices, plus a client using `requests`.
+
 Depends
 -------
 

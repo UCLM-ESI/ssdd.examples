@@ -1,3 +1,5 @@
+gRPC hello world: the client sends a name and the server replies with a greeting.
+
 Depends
 -------
 

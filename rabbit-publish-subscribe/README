@@ -1,3 +1,5 @@
+RabbitMQ publish/subscribe: one publisher sends a message and every subscriber receives a copy.
+
 # Extracted from: //www.rabbitmq.com/install-debian.html
 
 Instalacion en Debian/Ubuntu:

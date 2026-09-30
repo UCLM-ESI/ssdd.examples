@@ -1,3 +1,5 @@
+MQTT publish/subscribe: publishers send temperature and humidity readings to topics and a subscriber receives them through a Mosquitto broker.
+
 Depends
 -------
 

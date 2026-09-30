@@ -1,3 +1,5 @@
+Cap'n Proto RPC hello world in C++: a client calls a remote `upper` method that returns a text in uppercase.
+
 Depends
 -------
 

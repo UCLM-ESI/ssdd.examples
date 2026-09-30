@@ -1,3 +1,5 @@
+RabbitMQ work queue: a producer sends tasks that are distributed among several workers in round-robin.
+
 # Extracted from: //www.rabbitmq.com/install-debian.html
 
 Instalacion en Debian/Ubuntu:

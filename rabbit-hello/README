@@ -1,3 +1,5 @@
+RabbitMQ hello world: a producer sends a message to a queue and a consumer receives it.
+
 # Extracted from: http//www.rabbitmq.com/install-debian.html
 
 Install Debian/Ubuntu:
