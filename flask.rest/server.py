@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8; mode: python -*-
 
 # Example based on https://flask-restful.readthedocs.io/en/latest/quickstart.html
 

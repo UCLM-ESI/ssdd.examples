@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding:utf-8; mode:python -*-
 
 import hamcrest
 from prego import Task, TestCase, running
