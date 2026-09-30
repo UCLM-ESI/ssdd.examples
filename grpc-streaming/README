@@ -1,0 +1,40 @@
+gRPC streaming RPCs (server, client and bidirectional streaming) using numbers and factorials.
+
+Depends
+-------
+
+Install grpcio and grpcio-tools with your distribution packages (python3-grpc-tools),
+or in a virtualenv, either with pip:
+
+$ python3 -m venv .venv && . .venv/bin/activate
+$ pip install -r requirements.txt
+
+or with uv (creates .venv and opens a shell with it activated):
+
+$ make shell
+
+(requirements.txt is generated from pyproject.toml with "make requirements.txt")
+
+
+Compile proto
+-------------
+
+$ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. math.proto
+
+
+Run server
+----------
+
+$ ./server.py
+
+
+Run client
+----------
+
+$ ./client.py localhost 5
+
+
+Demo
+----
+
+$ ./demo.sh    # requires tmux

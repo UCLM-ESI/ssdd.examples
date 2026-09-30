@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package math;
+
+service Math {
+  // the server returns 1!, 2!, ..., n!
+  rpc factorials (Limit) returns (stream Number) {}
+
+  // the client sends numbers and the server returns their sum
+  rpc sum (stream Number) returns (Number) {}
+
+  // the server returns the factorial of each number as it arrives
+  rpc factorial_each (stream Number) returns (stream Number) {}
+}
+
+message Limit {
+  int32 value = 1;
+}
+
+message Number {
+  int64 value = 1;
+}
