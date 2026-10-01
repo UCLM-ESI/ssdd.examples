@@ -14,6 +14,7 @@
 import inspect
 import socket
 from collections import namedtuple
+from collections.abc import Callable
 
 # uint8/uint64 double as struct format characters and as the parameter/return
 # annotations read by _method() below to build the wire format of a call.
@@ -69,7 +70,7 @@ class Interface:
 
 
 class Servant:
-    STUBS = {}  # set by the generated subclass: function_id -> unbound stub method
+    STUBS: dict[int, Callable] = {}
 
     def dispatch(self, function_id, args):
         return self.STUBS[function_id](self, args)
