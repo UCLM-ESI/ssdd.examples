@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # pico-rmi runtime: IDL primitives to describe a remote interface, an
 # identity encoding used to address individual remote objects, the Servant

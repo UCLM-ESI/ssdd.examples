@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 from picormi import ObjectAdapter
 from counter_server_stub import Counter

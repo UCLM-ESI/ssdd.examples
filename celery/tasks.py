@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 from celery import Celery
 app = Celery('tasks', backend='rpc://', broker='pyamqp://')

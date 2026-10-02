@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # pico-rpc runtime: IDL primitives to describe a remote interface, plus
 # the Dispatcher used by generated server stubs to route incoming calls.

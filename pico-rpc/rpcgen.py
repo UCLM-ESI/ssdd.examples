@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # Interface compiler: reads an Interface subclass (idl.py) and generates
 # the client and server stubs. Usage: ./rpcgen.py <interface.idl.py>

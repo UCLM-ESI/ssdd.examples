@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 from picorpc import Dispatcher
 import math_server_stub

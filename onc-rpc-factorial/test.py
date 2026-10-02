@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import hamcrest
 from prego import Task, TestCase, running
