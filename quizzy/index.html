@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quizzy</title>
+<style>
+  body { font-family: sans-serif; max-width: 40em; margin: 2em auto; padding: 0 1em; }
+  a, a:visited { color: #00e; }
+  nav a { margin-right: 1em; }
+  label { display: block; margin: .5em 0; }
+  input[type=text], textarea { display: block; width: 100%; box-sizing: border-box; }
+  fieldset { margin: 1em 0; }
+  .error { color: #b00; white-space: pre-line; }
+</style>
+</head>
+<body>
+<h1>Quizzy</h1>
+<nav>
+  <a href="#/quizzes">Quizzes</a>
+  <a href="#/questions">Questions</a>
+  <a href="/docs" target="_blank">API docs</a>
+  <a href="/openapi.json" target="_blank">OpenAPI spec</a>
+</nav>
+<main></main>
+
+<script>
+// Single-page client for the Quizzy REST API: no frameworks, no build step.
+// The URL fragment (#/...) selects the view, so the page never reloads.
+
+const main = document.querySelector('main');
+
+function render(html) {
+  main.innerHTML = html;
+}
+
+// Escapes text that goes into the HTML, so it cannot inject markup
+function escape(text) {
+  const replacements = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'};
+  return String(text).replace(/[&<>"]/g, character => replacements[character]);
+}
+
+// Sends a request to the API and returns the JSON body of the response
+async function api(method, path, body) {
+  const response = await fetch(path, {
+    method,
+    headers: {'Content-Type': 'application/json'},
+    body: body && JSON.stringify(body),
+  });
+  const content = await response.json();
+  if (!response.ok)
+    throw new Error(errorMessage(response.status, content.detail));
+  return content;
+}
+
+// FastAPI reports validation errors as a list, and any other error as a string
+function errorMessage(status, detail) {
+  if (Array.isArray(detail))
+    detail = detail.map(error => `${error.loc.join('.')}: ${error.msg}`).join('\n');
+  return `${status}: ${detail}`;
+}
+
+// POST to the collection to create an item, or PUT to replace the one with that id
+function save(collection, id, content) {
+  return id ? api('PUT', `${collection}/${id}`, content) : api('POST', collection, content);
+}
+
+// Calls handler with the data of the form in the view, and shows any error below it
+function onSubmit(handler) {
+  const form = main.querySelector('form');
+  const error = main.querySelector('.error');
+  form.onsubmit = async event => {
+    event.preventDefault();
+    error.textContent = '';
+    try {
+      await handler(new FormData(form));
+    } catch (exception) {
+      error.textContent = exception.message;
+    }
+  };
+}
+
+function nonEmptyLines(text) {
+  return text.split('\n').map(line => line.trim()).filter(line => line);
+}
+
+async function showQuizzes() {
+  const quizzes = await api('GET', '/quizzes');
+  render(`<h2>Quizzes</h2>
+    <p><a href="#/quizzes/new">New quiz</a></p>
+    <ul>${quizzes.map(quiz => `
+      <li>[<a href="#/quizzes/${quiz.id}">Take</a> | <a href="#/quizzes/${quiz.id}/edit">Edit</a>]
+        ${escape(quiz.title)}</li>`).join('')}
+    </ul>`);
+}
+
+async function showQuestions() {
+  const questions = await api('GET', '/questions');
+  render(`<h2>Questions</h2>
+    <p><a href="#/questions/new">New question</a></p>
+    <ul>${questions.map(question => `
+      <li>[<a href="#/questions/${question.id}/edit">Edit</a>] ${escape(question.text)}</li>`).join('')}
+    </ul>`);
+}
+
+// Form to create a question or, given its id, to replace it
+async function showQuestionForm(id) {
+  const question = id ? await api('GET', `/questions/${id}`)
+                      : {text: '', options: [], correct_option: 0};
+  render(`<h2>${id ? 'Edit' : 'New'} question</h2>
+    <form>
+      <label>Text <input type="text" name="text" value="${escape(question.text)}"></label>
+      <label>Options, one per line
+        <textarea name="options" rows="4">${escape(question.options.join('\n'))}</textarea></label>
+      <label>Correct option (0 is the first)
+        <input type="number" name="correct_option" value="${question.correct_option}"></label>
+      <button>${id ? 'Save' : 'Create'}</button>
+      <p class="error"></p>
+    </form>`);
+  onSubmit(async data => {
+    await save('/questions', id, {
+      text: data.get('text'),
+      options: nonEmptyLines(data.get('options')),
+      correct_option: Number(data.get('correct_option')),
+    });
+    location.hash = '#/questions';
+  });
+}
+
+// Form to create a quiz or, given its id, to replace it
+async function showQuizForm(id) {
+  const questions = await api('GET', '/questions');
+  const quiz = id ? await api('GET', `/quizzes/${id}`) : {title: '', questions: []};
+  const includedIds = new Set(quiz.questions.map(question => question.id));
+  render(`<h2>${id ? 'Edit' : 'New'} quiz</h2>
+    <form>
+      <label>Title <input type="text" name="title" value="${escape(quiz.title)}"></label>
+      <fieldset><legend>Questions</legend>${questions.map(question => `
+        <label><input type="checkbox" name="question_ids" value="${question.id}"
+                      ${includedIds.has(question.id) ? 'checked' : ''}> ${escape(question.text)}</label>`).join('')}
+      </fieldset>
+      <button>${id ? 'Save' : 'Create'}</button>
+      <p class="error"></p>
+    </form>`);
+  onSubmit(async data => {
+    await save('/quizzes', id, {
+      title: data.get('title'),
+      question_ids: data.getAll('question_ids').map(Number),
+    });
+    location.hash = '#/quizzes';
+  });
+}
+
+async function showQuizToTake(id) {
+  const quiz = await api('GET', `/quizzes/${id}`);
+  render(`<h2>${escape(quiz.title)}</h2>
+    <form>${quiz.questions.map(question => `
+      <fieldset><legend>${escape(question.text)}</legend>${question.options.map((option, index) => `
+        <label><input type="radio" name="${question.id}" value="${index}"> ${escape(option)}</label>`).join('')}
+      </fieldset>`).join('')}
+      <button>Grade</button>
+      <p class="error"></p>
+    </form>`);
+  onSubmit(async data => {
+    // question id -> index of the chosen option
+    const answers = Object.fromEntries(
+      [...data].map(([questionId, option]) => [questionId, Number(option)]));
+    const {score, total} = await api('POST', `/quizzes/${id}/grade`, answers);
+    render(`<h2>${escape(quiz.title)}</h2><p>Score: ${score} of ${total}</p>`);
+  });
+}
+
+// Each route maps a URL fragment to the function that shows its view.
+// That function gets the groups captured by the pattern: the ids.
+const routes = [
+  [/^\/quizzes$/, showQuizzes],
+  [/^\/quizzes\/new$/, showQuizForm],
+  [/^\/quizzes\/(\d+)$/, showQuizToTake],
+  [/^\/quizzes\/(\d+)\/edit$/, showQuizForm],
+  [/^\/questions$/, showQuestions],
+  [/^\/questions\/new$/, showQuestionForm],
+  [/^\/questions\/(\d+)\/edit$/, showQuestionForm],
+];
+
+async function showCurrentRoute() {
+  const path = location.hash.slice(1);
+  const route = routes.find(([pattern]) => pattern.test(path));
+  if (!route) {
+    location.hash = '#/quizzes';
+    return;
+  }
+  const [pattern, showView] = route;
+  try {
+    await showView(...path.match(pattern).slice(1));
+  } catch (error) {
+    render(`<p class="error">${escape(error.message)}</p>`);
+  }
+}
+
+window.addEventListener('hashchange', showCurrentRoute);
+showCurrentRoute();
+</script>
+</body>
+</html>

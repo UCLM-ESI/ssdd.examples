@@ -1,0 +1,103 @@
+{
+  "questions": {
+    "udp-layer": {
+      "text": "Which layer does UDP belong to?",
+      "options": ["network", "transport", "application"],
+      "correct_option": 1
+    },
+    "tcp-handshake": {
+      "text": "How many segments does the TCP three-way handshake exchange?",
+      "options": ["2", "3", "4"],
+      "correct_option": 1
+    },
+    "tcp-syn": {
+      "text": "Which TCP flag requests the opening of a connection?",
+      "options": ["SYN", "ACK", "FIN", "RST"],
+      "correct_option": 0
+    },
+    "udp-retransmission": {
+      "text": "Does UDP retransmit lost datagrams?",
+      "options": ["yes", "no"],
+      "correct_option": 1
+    },
+    "port-bits": {
+      "text": "How many bits does a TCP or UDP port number have?",
+      "options": ["8", "16", "32"],
+      "correct_option": 1
+    },
+    "http-port": {
+      "text": "Which is the default TCP port for HTTP?",
+      "options": ["21", "80", "443"],
+      "correct_option": 1
+    },
+    "ipv4-bits": {
+      "text": "How many bits does an IPv4 address have?",
+      "options": ["32", "48", "64", "128"],
+      "correct_option": 0
+    },
+    "ipv6-bits": {
+      "text": "How many bits does an IPv6 address have?",
+      "options": ["32", "64", "128", "256"],
+      "correct_option": 2
+    },
+    "mac-bits": {
+      "text": "How many bits does an Ethernet MAC address have?",
+      "options": ["32", "48", "64"],
+      "correct_option": 1
+    },
+    "private-block": {
+      "text": "Which of these address blocks is reserved for private networks?",
+      "options": ["8.8.8.0/24", "192.168.0.0/16", "203.0.113.0/24"],
+      "correct_option": 1
+    },
+    "loopback": {
+      "text": "Which is the IPv4 loopback address?",
+      "options": ["0.0.0.0", "127.0.0.1", "255.255.255.255"],
+      "correct_option": 1
+    },
+    "arp": {
+      "text": "Which protocol finds the MAC address that corresponds to an IPv4 address?",
+      "options": ["DNS", "ARP", "DHCP"],
+      "correct_option": 1
+    },
+    "dns": {
+      "text": "What does DNS translate?",
+      "options": ["names to IP addresses", "IP addresses to MAC addresses", "port numbers to services"],
+      "correct_option": 0
+    },
+    "http-safe": {
+      "text": "Which HTTP method is safe?",
+      "options": ["GET", "POST", "PUT", "DELETE"],
+      "correct_option": 0
+    },
+    "http-not-idempotent": {
+      "text": "Which HTTP method is not idempotent?",
+      "options": ["GET", "PUT", "DELETE", "POST"],
+      "correct_option": 3
+    },
+    "http-201": {
+      "text": "Which HTTP status code means that a new resource has been created?",
+      "options": ["200", "201", "204"],
+      "correct_option": 1
+    },
+    "http-404": {
+      "text": "Which HTTP status code means that the resource does not exist?",
+      "options": ["400", "403", "404", "422"],
+      "correct_option": 2
+    }
+  },
+  "quizzes": [
+    {
+      "title": "Transport layer",
+      "questions": ["udp-layer", "tcp-handshake", "tcp-syn", "udp-retransmission", "port-bits", "http-port"]
+    },
+    {
+      "title": "Addressing",
+      "questions": ["ipv4-bits", "ipv6-bits", "mac-bits", "private-block", "loopback", "arp"]
+    },
+    {
+      "title": "HTTP and REST",
+      "questions": ["dns", "http-port", "http-safe", "http-not-idempotent", "http-201", "http-404"]
+    }
+  ]
+}
