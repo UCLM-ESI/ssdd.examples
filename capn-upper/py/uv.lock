@@ -3,7 +3,7 @@ revision = 3
 requires-python = ">=3.10"
 
 [[package]]
-name = "capn-rpc-hello-py"
+name = "capn-upper-py"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

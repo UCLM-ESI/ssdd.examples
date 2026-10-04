@@ -1,5 +1,5 @@
 [project]
-name = "capn-rpc-hello-py"
+name = "capn-upper-py"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
