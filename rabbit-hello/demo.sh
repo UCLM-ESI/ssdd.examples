@@ -12,7 +12,7 @@ tmux set-option -g set-titles off
 
 tmux split-window -h
 
-tmux send-keys -t session:0.0 "./consumer.py" C-m
-tmux send-keys -t session:0.1 "sleep 1; ./producer.py" C-m
+tmux send-keys -t session:0.1 "./consumer.py" C-m
+tmux send-keys -t session:0.0 "sleep 1; ./producer.py" C-m
 
 tmux attach-session -t session
